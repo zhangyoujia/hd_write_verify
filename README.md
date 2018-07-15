@@ -8,8 +8,10 @@ Author: YOUPLUS(<zhang_youjia@126.com>)
 hd_write_verify & hd_write_verify_dump is a tool of testing disk stability and verifying data consistency, for example: physical disk: ide/sata/scsi/ssd/iscsi/fc/raid. virtual disk: loop/nbd/lvm/soft raid. vm disk: ide/sata/scsi/virtio-blk/virtio-scsi.
 
 ## Compile
+<pre>
 `gcc -g -std=c99 -D_GNU_SOURCE -lpthread -lrt -o hd_write_verify hd_write_verify.h hd_write_verify.c`
 `gcc -g -std=c99 -D_GNU_SOURCE -o hd_write_verify_dump hd_write_verify.h hd_write_verify_dump.c`
+</pre>
 
 ## Usage
 `hd_write_verify / hd_write_verify_dump [opts] <disk>`
