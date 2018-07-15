@@ -22,8 +22,8 @@ hd_write_verify & hd_write_verify_dump is a tool of testing disk stability and v
 ![layout](./test/hd_write_verify%20V0.05.png)
 ![layout](./test/layout.png)
 
-## hd_write_verify Examples
-start & pause
+## Examples: (hd_write_verify)
+## start & pause
 ![example](./test/pause%20%26%20start.png)
 
 ## LBA Problem: BUG_001
@@ -44,7 +44,7 @@ start & pause
 ## LBA Problem: BUG_006
 ![example](./test/BUG_006\(3\).png)
 
-## hd_write_verify_dump Examples
+## Examples: (hd_write_verify_dump)
 ![example](./test/hd_write_verify_dump.png)
 
 ![example](./test/hd_write_verify_dump\(4\).png)
