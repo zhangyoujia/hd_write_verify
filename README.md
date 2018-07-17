@@ -5,7 +5,7 @@ Copyright (c) 2016 YOUPLUS
 
 Author: YOUPLUS(<zhang_youjia@126.com>)
 
-hd_write_verify & hd_write_verify_dump is a tool of testing disk stability and verifying data consistency, for example: physical disk: ide/sata/scsi/ssd/iscsi/fc/raid. virtual disk: loop/nbd/lvm/soft raid. vm disk: ide/sata/scsi/virtio-blk/virtio-scsi.
+hd_write_verify & hd_write_verify_dump is a tool for testing disk stability and verifying data consistency, for example: physical disk: ide/sata/scsi/ssd/iscsi/fc/raid. virtual disk: loop/nbd/lvm/soft raid. virtual machine disk: ide/sata/scsi/virtio-blk/virtio-scsi.
 
 ## Compile
 <pre>
