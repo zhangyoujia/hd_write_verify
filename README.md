@@ -60,3 +60,18 @@ hd_write_verify & hd_write_verify_dump is a tool for testing disk stability and 
 ![example](./test/hd_write_verify3.png)
 
 ![example](./test/hd_write_verify_dump\(windows\).png)
+
+
+## 磁盘稳定性自动化测试
+![example](./test/磁盘lba工具自动化测试.png)
+
+![example](./test/磁盘lba工具自动化测试1.png)
+
+![example](./test/磁盘lba工具自动化测试2.png)
+
+![example](./test/磁盘lba工具自动化测试4.png)
+
+![example](./test/磁盘lba工具自动化测试5.png)
+
+
+
