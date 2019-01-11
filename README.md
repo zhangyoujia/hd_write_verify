@@ -13,12 +13,12 @@ hd_write_verify & hd_write_verify_dump is a tool for testing disk stability and 
 `gcc -g -std=c99 -O2 -D_GNU_SOURCE -o hd_write_verify_dump hd_write_verify.h hd_write_verify_dump.c`
 </pre>
 
-## Usage
+## Linux版本
 `hd_write_verify / hd_write_verify_dump [opts] <disk>`
 
-![useage](./test/hd_write_verify%20help.png)
+![usage](./test/hd_write_verify%20help.png)
 
-![useage](./test/hd_write_verify_dump%20help.png)
+![usage](./test/hd_write_verify_dump%20help.png)
 
 ## Test & Verify Data Layout
 ![layout](./test/hd_write_verify%20V0.05.png)
@@ -52,8 +52,8 @@ hd_write_verify & hd_write_verify_dump is a tool for testing disk stability and 
 ![example](./test/hd_write_verify_dump\(4\).png)
 
 
-## windows版本
-![example](./test/hd_write_verify%20help\(2\).png)
+## Windows版本
+![usage](./test/hd_write_verify.exe%20help.png)
 
 ![example](./test/hd_write_verify.png)
 
