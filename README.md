@@ -82,5 +82,34 @@ hd_write_verify & hd_write_verify_dump is a tool for testing disk stability and 
 
 ![example](./test/磁盘lba工具自动化测试5.png)
 
+## linux文件条带测试
+#linux两条带测试
+![example](./test/两条带测试_linux.png)
 
+#linux两条带线程数据校验
+![example](./test/两条带线程数据校验_linux.png)
 
+#linux两条带簇间数据校验
+![example](./test/两条带簇间数据校验_linux.png)
+
+#linux两条带簇内数据校验
+![example](./test/两条带簇内数据校验_linux.png)
+
+#linux三条带测试
+![example](./test/三条带测试_linux.png)
+
+## windows磁盘条带测试
+#windows两磁盘条带测试
+![example](./test/两磁盘条带测试_windows.png)
+
+#windows两条带线程数据校验
+![example](./test/两条带线程数据校验_windows.png)
+
+#windows两条带簇间数据校验
+![example](./test/两条带簇间数据校验_windows.png)
+
+#windows两条带簇内数据校验
+![example](./test/两条带簇内数据校验_windows.png)
+
+#windows三条带自动化测试
+![example](./test/三条带自动化测试_windows.png)
