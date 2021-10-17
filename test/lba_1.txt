@@ -1,0 +1,299 @@
+Sangfor:aSV/host-4c72b9e6db88 /sf/data/test/lba # hd_write_verify -c -D -T 1 /dev/nbd4				【1】
+Device Topology:
+	Disk: /dev/nbd4
+	Logical  block size: 512
+	Physical block size: 512
+	Minimum I/O size: 512
+	Optimal I/O size: 0 (0: unknown)
+	Alignment offset: 0
+	Disk Size: 4294967296 / 4096M / 4G
+
+Disk: /dev/nbd4 | Thread: 1 | Total Sectors: 8388608 | Total Clusters: 4096 | Sectors of Cluster: 2048 | DIRECT IO & NO Flush | Verify: 1 | Notify: 0
+
+Current Time: 2021-10-09 14:44:31
+
+Thread 0: Starting check disk ...
+
+Current Time: 2021-10-09 14:44:32
+WARNING! Thread: 0 VERIFY DIFFER FLAGS
+PREV LBA: 0x3c1800 - NEXT LBA: 0x7ce000 flags is different | read[68]
+
+PREV LBA: 0x3c1800 | HF: 0x08001270 F1: 0xe6ffde33 F2: 0xe7db3870 [LOOP: 1 WRITE: 67 SECTOR: 0 / NUM: 2048 / ZERO: 82]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0x7ce000 | HF: 0x08001275 F1: 0xcde4a827 F2: 0xc90dde40 [LOOP: 2 WRITE: 177 SECTOR: 0 / NUM: 2048 / ZERO: 204]
+NEXT LBA IO Time: 2021-10-01 03:38:31
+
+----------------------------------------------------------------------------------------------------------------------
+
+Thread 1: Starting check disk ...
+
+Current Time: 2021-10-09 14:44:35
+WARNING! Thread: 1 VERIFY DIFFER FLAGS
+PREV LBA: 0x1e800 - NEXT LBA: 0x693000 flags is different | read[68]
+
+PREV LBA: 0x1e800 | HF: 0x08001271 F1: 0xe6ffde33 F2: 0x484fb800 [LOOP: 1 WRITE: 67 SECTOR: 0 / NUM: 2048 / ZERO: 208]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0x693000 | HF: 0x08001270 F1: 0xcde4a827 F2: 0xc2a62bd3 [LOOP: 1 WRITE: 230 SECTOR: 0 / NUM: 2048 / ZERO: 71]
+NEXT LBA IO Time: 2021-10-01 03:28:01
+
+----------------------------------------------------------------------------------------------------------------------
+
+Thread 2: Starting check disk ...
+
+Current Time: 2021-10-09 14:44:37
+WARNING! Thread: 2 WRITE SECTORS INCONSISTENT | read[74]
+
+CORRECT LBA[0]: 0x222800 | HF: 0x08001272 F1: 0xe6ffde33 F2: 0x86d07280 [LOOP: 1 WRITE: 74 SECTOR: 0 / NUM: 2048 / ZERO: 222]
+CORRECT IO Time: 2021-10-01 03:52:38
+
+ERROR LBA[38]: 0x222826 | HF: 0x08001277 F1: 0xcde4a827 F2: 0xcdc94ff6 [LOOP: 1 WRITE: 258 SECTOR: 38 / NUM: 2048 / ZERO: 112]
+INCONSISTENT IO Time: 2021-10-01 03:28:22
+
+----------------------------------------------------------------------------------------------------------------------
+
+Thread 3: Starting check disk ...
+
+Current Time: 2021-10-09 14:44:40
+WARNING! Thread: 3 VERIFY DIFFER FLAGS
+PREV LBA: 0x7ef800 - NEXT LBA: 0x54d800 flags is different | read[61]
+
+PREV LBA: 0x7ef800 | HF: 0x08001273 F1: 0xe6ffde33 F2: 0x9fcf80b0 [LOOP: 1 WRITE: 60 SECTOR: 0 / NUM: 2048 / ZERO: 153]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0x54d800 | HF: 0x08001274 F1: 0xcde4a827 F2: 0x28e140e0 [LOOP: 2 WRITE: 124 SECTOR: 0 / NUM: 2048 / ZERO: 58]
+NEXT LBA IO Time: 2021-10-01 03:37:56
+
+----------------------------------------------------------------------------------------------------------------------
+
+Thread 4: Starting check disk ...
+
+Current Time: 2021-10-09 14:44:43
+WARNING! Thread: 4 VERIFY DIFFER FLAGS
+PREV LBA: 0x650000 - NEXT LBA: 0x69c800 flags is different | read[57]
+
+PREV LBA: 0x650000 | HF: 0x08001274 F1: 0xe6ffde33 F2: 0x71e00cda [LOOP: 1 WRITE: 56 SECTOR: 0 / NUM: 2048 / ZERO: 186]
+PREV LBA IO Time: 2021-10-01 03:52:35
+
+NEXT LBA: 0x69c800 | HF: 0x08001271 F1: 0xcde4a827 F2: 0x47c495fc [LOOP: 2 WRITE: 194 SECTOR: 0 / NUM: 2048 / ZERO: 160]
+NEXT LBA IO Time: 2021-10-01 03:38:46
+
+----------------------------------------------------------------------------------------------------------------------
+
+Thread 5: Starting check disk ...
+
+Current Time: 2021-10-09 14:44:45
+WARNING! Thread: 5 VERIFY DIFFER FLAGS
+PREV LBA: 0x6f5000 - NEXT LBA: 0x424000 flags is different | read[70]
+
+PREV LBA: 0x6f5000 | HF: 0x08001275 F1: 0xe6ffde33 F2: 0xd4e2495a [LOOP: 1 WRITE: 69 SECTOR: 0 / NUM: 2048 / ZERO: 236]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0x424000 | HF: 0x08001279 F1: 0xcde4a827 F2: 0x26803822 [LOOP: 2 WRITE: 210 SECTOR: 0 / NUM: 2048 / ZERO: 100]
+NEXT LBA IO Time: 2021-10-01 03:38:59
+
+----------------------------------------------------------------------------------------------------------------------
+
+Thread 6: Starting check disk ...
+
+Current Time: 2021-10-09 14:44:48
+WARNING! Thread: 6 WRITE SECTORS INCONSISTENT | read[67]
+
+CORRECT LBA[0]: 0x13f000 | HF: 0x08001276 F1: 0xe6ffde33 F2: 0x0ba3463a [LOOP: 1 WRITE: 67 SECTOR: 0 / NUM: 2048 / ZERO: 172]
+CORRECT IO Time: 2021-10-01 03:52:38
+
+ERROR LBA[896]: 0x13f380 | HF: 0x08001270 F1: 0xcde4a827 F2: 0xc22692c0 [LOOP: 2 WRITE: 117 SECTOR: 896 / NUM: 2048 / ZERO: 72]
+INCONSISTENT IO Time: 2021-10-01 03:37:47
+
+----------------------------------------------------------------------------------------------------------------------
+
+Thread 7: Starting check disk ...
+
+Current Time: 2021-10-09 14:44:51
+WARNING! Thread: 7 VERIFY DIFFER FLAGS
+PREV LBA: 0x7ed000 - NEXT LBA: 0xdc800 flags is different | read[55]
+
+PREV LBA: 0x7ed000 | HF: 0x08001277 F1: 0xe6ffde33 F2: 0xaae77414 [LOOP: 1 WRITE: 54 SECTOR: 0 / NUM: 2048 / ZERO: 36]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0xdc800 | HF: 0x08001275 F1: 0xcde4a827 F2: 0xc90dde40 [LOOP: 2 WRITE: 16 SECTOR: 0 / NUM: 2048 / ZERO: 204]
+NEXT LBA IO Time: 2021-10-01 03:34:29
+
+----------------------------------------------------------------------------------------------------------------------
+
+Thread 8: Starting check disk ...
+
+Current Time: 2021-10-09 14:44:54
+WARNING! Thread: 8 VERIFY DIFFER FLAGS
+PREV LBA: 0xb0800 - NEXT LBA: 0x6b0000 flags is different | read[76]
+
+PREV LBA: 0xb0800 | HF: 0x08001278 F1: 0xe6ffde33 F2: 0xe6c94d00 [LOOP: 1 WRITE: 75 SECTOR: 0 / NUM: 2048 / ZERO: 28]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0x6b0000 | HF: 0x08001277 F1: 0xcde4a827 F2: 0x17ac6454 [LOOP: 2 WRITE: 61 SECTOR: 0 / NUM: 2048 / ZERO: 64]
+NEXT LBA IO Time: 2021-10-01 03:36:31
+
+----------------------------------------------------------------------------------------------------------------------
+
+Thread 9: Starting check disk ...
+
+Current Time: 2021-10-09 14:44:56
+WARNING! Thread: 9 VERIFY DIFFER FLAGS
+PREV LBA: 0x360800 - NEXT LBA: 0x144800 flags is different | read[63]
+
+PREV LBA: 0x360800 | HF: 0x08001279 F1: 0xe6ffde33 F2: 0x45650e4f [LOOP: 1 WRITE: 62 SECTOR: 0 / NUM: 2048 / ZERO: 208]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0x144800 | HF: 0x08001274 F1: 0xcde4a827 F2: 0xf5d53555 [LOOP: 1 WRITE: 118 SECTOR: 0 / NUM: 2048 / ZERO: 90]
+NEXT LBA IO Time: 2021-10-01 03:26:47
+
+----------------------------------------------------------------------------------------------------------------------
+
+Current Time: 2021-10-09 14:44:58
+Sangfor:aSV/host-4c72b9e6db88 /sf/data/test/lba # 
+
+Sangfor:aSV/host-4c72b9e6db88 /sf/data/test/lba # hd_write_verify -c -D -T 10 /dev/nbd4				【2】
+Device Topology:
+	Disk: /dev/nbd4
+	Logical  block size: 512
+	Physical block size: 512
+	Minimum I/O size: 512
+	Optimal I/O size: 0 (0: unknown)
+	Alignment offset: 0
+	Disk Size: 4294967296 / 4096M / 4G
+
+Disk: /dev/nbd4 | Thread: 10 | Total Sectors: 8388608 | Total Clusters: 4096 | Sectors of Cluster: 2048 | DIRECT IO & NO Flush | Verify: 1 | Notify: 0
+
+Current Time: 2021-10-09 14:45:27
+Thread 0: Starting check disk ...
+Thread 9: Starting check disk ...
+Thread 6: Starting check disk ...
+Thread 5: Starting check disk ...
+Thread 7: Starting check disk ...
+Thread 8: Starting check disk ...
+Thread 2: Starting check disk ...
+Thread 3: Starting check disk ...
+Thread 1: Starting check disk ...
+Thread 4: Starting check disk ...
+
+Current Time: 2021-10-09 14:45:33
+WARNING! Thread: 7 VERIFY DIFFER FLAGS
+PREV LBA: 0x7ed000 - NEXT LBA: 0xdc800 flags is different | read[55]
+
+PREV LBA: 0x7ed000 | HF: 0x08001277 F1: 0xe6ffde33 F2: 0xaae77414 [LOOP: 1 WRITE: 54 SECTOR: 0 / NUM: 2048 / ZERO: 36]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0xdc800 | HF: 0x08001275 F1: 0xcde4a827 F2: 0xc90dde40 [LOOP: 2 WRITE: 16 SECTOR: 0 / NUM: 2048 / ZERO: 204]
+NEXT LBA IO Time: 2021-10-01 03:34:29
+
+----------------------------------------------------------------------------------------------------------------------
+
+Current Time: 2021-10-09 14:45:34
+WARNING! Thread: 9 VERIFY DIFFER FLAGS
+PREV LBA: 0x360800 - NEXT LBA: 0x144800 flags is different | read[63]
+
+PREV LBA: 0x360800 | HF: 0x08001279 F1: 0xe6ffde33 F2: 0x45650e4f [LOOP: 1 WRITE: 62 SECTOR: 0 / NUM: 2048 / ZERO: 208]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0x144800 | HF: 0x08001274 F1: 0xcde4a827 F2: 0xf5d53555 [LOOP: 1 WRITE: 118 SECTOR: 0 / NUM: 2048 / ZERO: 90]
+NEXT LBA IO Time: 2021-10-01 03:26:47
+
+----------------------------------------------------------------------------------------------------------------------
+
+Current Time: 2021-10-09 14:45:35
+WARNING! Thread: 6 WRITE SECTORS INCONSISTENT | read[67]
+
+CORRECT LBA[0]: 0x13f000 | HF: 0x08001276 F1: 0xe6ffde33 F2: 0x0ba3463a [LOOP: 1 WRITE: 67 SECTOR: 0 / NUM: 2048 / ZERO: 172]
+CORRECT IO Time: 2021-10-01 03:52:38
+
+ERROR LBA[896]: 0x13f380 | HF: 0x08001270 F1: 0xcde4a827 F2: 0xc22692c0 [LOOP: 2 WRITE: 117 SECTOR: 896 / NUM: 2048 / ZERO: 72]
+INCONSISTENT IO Time: 2021-10-01 03:37:47
+
+----------------------------------------------------------------------------------------------------------------------
+
+Current Time: 2021-10-09 14:45:36
+WARNING! Thread: 0 VERIFY DIFFER FLAGS
+PREV LBA: 0x3c1800 - NEXT LBA: 0x7ce000 flags is different | read[68]
+
+PREV LBA: 0x3c1800 | HF: 0x08001270 F1: 0xe6ffde33 F2: 0xe7db3870 [LOOP: 1 WRITE: 67 SECTOR: 0 / NUM: 2048 / ZERO: 82]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0x7ce000 | HF: 0x08001275 F1: 0xcde4a827 F2: 0xc90dde40 [LOOP: 2 WRITE: 177 SECTOR: 0 / NUM: 2048 / ZERO: 204]
+NEXT LBA IO Time: 2021-10-01 03:38:31
+
+----------------------------------------------------------------------------------------------------------------------
+
+Current Time: 2021-10-09 14:45:36
+WARNING! Thread: 5 VERIFY DIFFER FLAGS
+PREV LBA: 0x6f5000 - NEXT LBA: 0x424000 flags is different | read[70]
+
+PREV LBA: 0x6f5000 | HF: 0x08001275 F1: 0xe6ffde33 F2: 0xd4e2495a [LOOP: 1 WRITE: 69 SECTOR: 0 / NUM: 2048 / ZERO: 236]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0x424000 | HF: 0x08001279 F1: 0xcde4a827 F2: 0x26803822 [LOOP: 2 WRITE: 210 SECTOR: 0 / NUM: 2048 / ZERO: 100]
+NEXT LBA IO Time: 2021-10-01 03:38:59
+
+----------------------------------------------------------------------------------------------------------------------
+
+Current Time: 2021-10-09 14:45:38
+WARNING! Thread: 4 VERIFY DIFFER FLAGS
+PREV LBA: 0x650000 - NEXT LBA: 0x69c800 flags is different | read[57]
+
+PREV LBA: 0x650000 | HF: 0x08001274 F1: 0xe6ffde33 F2: 0x71e00cda [LOOP: 1 WRITE: 56 SECTOR: 0 / NUM: 2048 / ZERO: 186]
+PREV LBA IO Time: 2021-10-01 03:52:35
+
+NEXT LBA: 0x69c800 | HF: 0x08001271 F1: 0xcde4a827 F2: 0x47c495fc [LOOP: 2 WRITE: 194 SECTOR: 0 / NUM: 2048 / ZERO: 160]
+NEXT LBA IO Time: 2021-10-01 03:38:46
+
+----------------------------------------------------------------------------------------------------------------------
+
+Current Time: 2021-10-09 14:45:38
+WARNING! Thread: 1 VERIFY DIFFER FLAGS
+PREV LBA: 0x1e800 - NEXT LBA: 0x693000 flags is different | read[68]
+
+PREV LBA: 0x1e800 | HF: 0x08001271 F1: 0xe6ffde33 F2: 0x484fb800 [LOOP: 1 WRITE: 67 SECTOR: 0 / NUM: 2048 / ZERO: 208]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0x693000 | HF: 0x08001270 F1: 0xcde4a827 F2: 0xc2a62bd3 [LOOP: 1 WRITE: 230 SECTOR: 0 / NUM: 2048 / ZERO: 71]
+NEXT LBA IO Time: 2021-10-01 03:28:01
+
+----------------------------------------------------------------------------------------------------------------------
+
+Current Time: 2021-10-09 14:45:39
+WARNING! Thread: 8 VERIFY DIFFER FLAGS
+PREV LBA: 0xb0800 - NEXT LBA: 0x6b0000 flags is different | read[76]
+
+PREV LBA: 0xb0800 | HF: 0x08001278 F1: 0xe6ffde33 F2: 0xe6c94d00 [LOOP: 1 WRITE: 75 SECTOR: 0 / NUM: 2048 / ZERO: 28]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0x6b0000 | HF: 0x08001277 F1: 0xcde4a827 F2: 0x17ac6454 [LOOP: 2 WRITE: 61 SECTOR: 0 / NUM: 2048 / ZERO: 64]
+NEXT LBA IO Time: 2021-10-01 03:36:31
+
+----------------------------------------------------------------------------------------------------------------------
+
+Current Time: 2021-10-09 14:45:40
+WARNING! Thread: 3 VERIFY DIFFER FLAGS
+PREV LBA: 0x7ef800 - NEXT LBA: 0x54d800 flags is different | read[61]
+
+PREV LBA: 0x7ef800 | HF: 0x08001273 F1: 0xe6ffde33 F2: 0x9fcf80b0 [LOOP: 1 WRITE: 60 SECTOR: 0 / NUM: 2048 / ZERO: 153]
+PREV LBA IO Time: 2021-10-01 03:52:38
+
+NEXT LBA: 0x54d800 | HF: 0x08001274 F1: 0xcde4a827 F2: 0x28e140e0 [LOOP: 2 WRITE: 124 SECTOR: 0 / NUM: 2048 / ZERO: 58]
+NEXT LBA IO Time: 2021-10-01 03:37:56
+
+----------------------------------------------------------------------------------------------------------------------
+
+Current Time: 2021-10-09 14:45:40
+WARNING! Thread: 2 WRITE SECTORS INCONSISTENT | read[74]
+
+CORRECT LBA[0]: 0x222800 | HF: 0x08001272 F1: 0xe6ffde33 F2: 0x86d07280 [LOOP: 1 WRITE: 74 SECTOR: 0 / NUM: 2048 / ZERO: 222]
+CORRECT IO Time: 2021-10-01 03:52:38
+
+ERROR LBA[38]: 0x222826 | HF: 0x08001277 F1: 0xcde4a827 F2: 0xcdc94ff6 [LOOP: 1 WRITE: 258 SECTOR: 38 / NUM: 2048 / ZERO: 112]
+INCONSISTENT IO Time: 2021-10-01 03:28:22
+
+----------------------------------------------------------------------------------------------------------------------
+
+Current Time: 2021-10-09 14:45:50
+Sangfor:aSV/host-4c72b9e6db88 /sf/data/test/lba # 
