@@ -17,7 +17,7 @@ hd_write_verify & hd_write_verify_dump is a tool for testing disk stability and 
 </pre>
 
 ## Linux版本
-`hd_write_verify / hd_write_verify_dump [opts] <disk>`
+`hd_write_verify / hd_write_verify_dump [opts] <disk|file>`
 
 ![usage](./test/hd_write_verify%20help.png)
 
