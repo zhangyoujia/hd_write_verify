@@ -8,7 +8,9 @@ Copyright (c) 2016 YOUPLUS
 
 Author: YOUPLUS(<zhang_youjia@126.com>)
 
-hd_write_verify & hd_write_verify_dump is a tool for testing disk stability and verifying data consistency, for example: physical disk: ide/sata/scsi/ssd/iscsi/fc/raid. virtual disk: loop/nbd/lvm/soft raid. virtual machine disk: ide/sata/scsi/virtio-blk/virtio-scsi.
+hd_write_verify & hd_write_verify_dump is a tool for testing disk stability and verifying data consistency, for example:
+physical disk: ide/sata/scsi/ssd/iscsi/fc/raid. virtual disk: loop/nbd/lvm/soft raid.
+virtual machine disk: ide/sata/scsi/virtio-blk/virtio-scsi.
 
 ## Linux版本
 `hd_write_verify / hd_write_verify_dump [opts] <disk|file>`
@@ -21,38 +23,75 @@ hd_write_verify & hd_write_verify_dump is a tool for testing disk stability and 
 ![layout](./test/LBA_layout.png)
 ![layout](./test/layout.png)
 
+## LBA工具输出说明
+![example](./test/LBA工具输出说明.png)
+
+## LBA dump工具输出说明
+![example](./test/LBA工具输出说明2.png)
+
 ## Examples: (hd_write_verify)
+![example](./test/YOUPLUS's_LBA_TEST_SYSTEM.png)
+
+![example](./test/YOUPLUS's_LBA_TEST_SYSTEM2.png)
+
 ![example](./test/lba工具使用演示.gif)
 
 ![example](./test/lba工具_BUG%20007.gif)
 
-## start & pause
-![example](./test/pause%20%26%20start.png)
+## LBA Problem: BUG_001[1]
+![example](./test/BUG001[1].png)
 
-## LBA Problem: BUG_001
-![example](./test/BUG_001.png)
+## LBA Problem: BUG_001[2]
+![example](./test/BUG001[2].png)
 
-## LBA Problem: BUG_002
-![example](./test/BUG_002.png)
+## LBA Problem: BUG_001[3]
+![example](./test/BUG001[3].png)
+
+## LBA Problem: BUG_001[4]
+![example](./test/BUG001[4].png)
+
+## LBA Problem: BUG_002[1]
+![example](./test/BUG002[1].png)
+
+## LBA Problem: BUG_002[2]
+![example](./test/BUG002[2].png)
+
+## LBA Problem: BUG_002[3]
+![example](./test/BUG002[3].png)
+
+## LBA Problem: BUG_002[4]
+![example](./test/BUG002[4].png)
 
 ## LBA Problem: BUG_003
-![example](./test/BUG_003.png)
+![example](./test/BUG003.png)
 
 ## LBA Problem: BUG_004
-![example](./test/BUG_004\(2\).png)
+![example](./test/BUG004.png)
 
 ## LBA Problem: BUG_005
-![example](./test/BUG_005.png)
+![example](./test/BUG005.png)
 
 ## LBA Problem: BUG_006
-![example](./test/BUG_006\(3\).png)
+![example](./test/BUG006.png)
+
+## LBA Problem: BUG_007[1]
+![example](./test/BUG007[1].png)
+
+## LBA Problem: BUG_007[2]
+![example](./test/BUG007[2].png)
+
+## LBA Problem: BUG_007[3]
+![example](./test/BUG007[3].png)
+
+## LBA Problem: BUG_007[4]
+![example](./test/BUG007[4].png)
 
 ## Examples: (hd_write_verify_dump)
-![example](./test/hd_write_verify_dump.png)
+![example](./test/dump.png)
 
-![example](./test/hd_write_verify_dump\(4\).png)
+![example](./test/簇内数据校验.png)
 
-![example](./test/lun_lba_part.png)
+![example](./test/簇内数据校验2.png)
 
 
 ## Windows版本
@@ -77,20 +116,17 @@ hd_write_verify & hd_write_verify_dump is a tool for testing disk stability and 
 ![example](./test/磁盘lba工具自动化测试5.png)
 
 ## linux文件条带测试
-#linux两条带测试
-![example](./test/两条带测试_linux.png)
+#linux条带测试：round-robin
+![example](./test/stripe_robin.png)
 
-#linux两条带线程数据校验
-![example](./test/两条带线程数据校验_linux.png)
+#linux条带线程数据校验：round-robin
+![example](./test/stripe_robin_dump.png)
 
-#linux两条带簇间数据校验
-![example](./test/两条带簇间数据校验_linux.png)
+#linux条带测试：cluster-split
+![example](./test/stripe_split.png)
 
-#linux两条带簇内数据校验
-![example](./test/两条带簇内数据校验_linux.png)
-
-#linux三条带测试
-![example](./test/三条带测试_linux.png)
+#linux条带线程数据校验：cluster-split
+![example](./test/stripe_split_dump.png)
 
 ## windows磁盘条带测试
 #windows两磁盘条带测试
