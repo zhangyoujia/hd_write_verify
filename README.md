@@ -1,10 +1,11 @@
 ## YOUPLUS's tools
 ![YOUPLUS's tools](./YOUPLUS工具箱.png)
 
-# hd_write_verify & hd_write_verify_dump
 =========================================================================
 
-Copyright (c) 2016 YOUPLUS
+# hd_write_verify & hd_write_verify_dump
+
+Copyright (c) 2016-2023 YOUPLUS
 
 Author: YOUPLUS(<zhang_youjia@126.com>)
 
@@ -19,15 +20,39 @@ virtual machine disk: ide/sata/scsi/virtio-blk/virtio-scsi.
 
 ![usage](./test/hd_write_verify_dump%20help.png)
 
-## Test & Verify Data Layout
+## Copyright & Data Layout
 ![layout](./test/LBA_layout.png)
 ![layout](./test/layout.png)
+
+## LBA工具参数说明
+![example](./test/hd_write_verify参数说明.png)
 
 ## LBA工具输出说明
 ![example](./test/LBA工具输出说明.png)
 
+## LBA dump工具参数说明
+![example](./test/hd_write_verify_dump参数说明.png)
+
 ## LBA dump工具输出说明
 ![example](./test/LBA工具输出说明2.png)
+
+## LBA错误类型
+![example](./test/LBA错误类型.png)
+
+## 条带策略：round-robin
+![example](./test/round-robin.png)
+
+## 条带策略：cluster-split
+![example](./test/cluster-split.png)
+
+## 存储稳定性测试与数据一致性校验系统
+![example](./test/存储稳定性测试与数据一致性校验系统.png)
+
+## 目录
+![example](./test/目录.png)
+
+## 展望
+![example](./test/展望.png)
 
 ## Examples: (hd_write_verify)
 ![example](./test/YOUPLUS's_LBA_TEST_SYSTEM.png)
