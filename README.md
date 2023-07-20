@@ -45,8 +45,8 @@ virtual machine disk: ide/sata/scsi/virtio-blk/virtio-scsi.
 ## 条带策略：cluster-split
 ![example](./test/cluster-split.png)
 
-## 存储稳定性测试与数据一致性校验系统
-![example](./test/存储稳定性测试与数据一致性校验系统.png)
+## 存储稳定性测试与数据一致性校验工具和系统
+![example](./test/存储稳定性测试与数据一致性校验工具和系统.png)
 
 ## 目录
 ![example](./test/目录.png)
