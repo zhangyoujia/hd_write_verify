@@ -13,6 +13,15 @@ hd_write_verify & hd_write_verify_dump is a tool for testing disk stability and 
 physical disk: ide/sata/scsi/ssd/iscsi/fc/raid. virtual disk: loop/nbd/lvm/soft raid.
 virtual machine disk: ide/sata/scsi/virtio-blk/virtio-scsi.
 
+## 存储稳定性测试与数据一致性校验工具和系统
+![example](./test/存储稳定性测试与数据一致性校验工具和系统.png)
+
+## 目录
+![example](./test/目录.png)
+
+## 展望
+![example](./test/展望.png)
+
 ## Linux版本
 `hd_write_verify / hd_write_verify_dump [opts] <disk|file>`
 
@@ -39,20 +48,29 @@ virtual machine disk: ide/sata/scsi/virtio-blk/virtio-scsi.
 ## LBA错误类型
 ![example](./test/LBA错误类型.png)
 
+## LBA工具实现原理
+![example](./test/LBA工具实现原理1.png)
+
+![example](./test/LBA工具实现原理2.png)
+
+![example](./test/LBA工具实现原理3.png)
+
+![example](./test/LBA工具实现原理4.png)
+
+## 全盘数据校验
+![example](./test/全盘数据校验.png)
+
+## 批量数据校验
+![example](./test/批量数据校验.png)
+
+## 随机数据校验
+![example](./test/随机数据校验.png)
+
 ## 条带策略：round-robin
 ![example](./test/round-robin.png)
 
 ## 条带策略：cluster-split
 ![example](./test/cluster-split.png)
-
-## 存储稳定性测试与数据一致性校验工具和系统
-![example](./test/存储稳定性测试与数据一致性校验工具和系统.png)
-
-## 目录
-![example](./test/目录.png)
-
-## 展望
-![example](./test/展望.png)
 
 ## Examples: (hd_write_verify)
 ![example](./test/YOUPLUS's_LBA_TEST_SYSTEM.png)
