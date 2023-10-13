@@ -5,13 +5,17 @@
 
 # hd_write_verify & hd_write_verify_dump
 
-Copyright (c) 2016-2023 YOUPLUS
-
 Author: YOUPLUS(<zhang_youjia@126.com>)
 
-hd_write_verify & hd_write_verify_dump is a tool for testing disk stability and verifying data consistency, for example:
-physical disk: ide/sata/scsi/ssd/iscsi/fc/raid. virtual disk: loop/nbd/lvm/soft raid.
-virtual machine disk: ide/sata/scsi/virtio-blk/virtio-scsi.
+Copyright (c) 2016-2023 YOUPLUS. All Rights Reserved.
+
+Data is a vital asset for many businesses, making storage stability and data consistency the most fundamental requirements in storage technology scenarios.
+
+The purpose of storage stability testing is to ensure that storage devices or systems can operate normally and remain stable over time, while also handling various abnormal situations such as sudden power outages and network failures. This testing typically includes stress testing, load testing, fault tolerance testing, and other evaluations to assess the performance and reliability of the storage system.
+
+Data consistency checking is designed to ensure that the data stored in the system is accurate and consistent. This means that whenever data changes occur, all replicas should be updated simultaneously to avoid data inconsistency. Data consistency checking typically involves aspects such as data integrity, accuracy, consistency, and reliability.
+
+LBA tools are very useful for testing Storage stability and verifying DATA consistency, there are much better than FIO & vdbench's verifying functions.
 
 ## 存储稳定性测试与数据一致性校验工具和系统
 ![example](./test/存储稳定性测试与数据一致性校验工具和系统.png)
