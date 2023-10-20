@@ -48,5 +48,10 @@ hd_write_verify -c -D -K -i sector -E 60 -S 512 -V batch -T 10 /dev/sdX
 
 七. Q & A
 
-八. 腾讯会议录屏
+八. 介绍文档
+https://cloud.tencent.com/developer/article/2345169
+
+九.	腾讯会议录屏
+https://cloud.tencent.com/developer/video/78756
+
 https://www.bilibili.com/video/BV1aX4y1L78a/?spm_id_from=333.999.0.0&vd_source=883f83305607b323980f16140ecc0dde
