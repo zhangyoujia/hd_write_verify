@@ -79,7 +79,7 @@ LBA tools are very useful for testing Storage stability and verifying DATA consi
 ## Examples: (hd_write_verify)
 ![example](./test/YOUPLUS's_LBA_TEST_SYSTEM.png)
 
-![example](./test/LBA_iso.gif)
+![example](./test/YOUPLUS's_LBA_TEST_SYSTEM.gif)
 
 ![example](./test/YOUPLUS's_LBA_TEST_SYSTEM2.png)
 
