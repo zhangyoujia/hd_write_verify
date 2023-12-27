@@ -1,5 +1,6 @@
 #!/bin/bash
 
+#Author: YOUPLUS <zhang_youjia@126.com>
 #注意: 脚本必须以前台方式运行
 #主要作用: 块存储稳定性测试和数据一致性校验
 
@@ -9,6 +10,8 @@ cluster_sectors=2048
 skip_disk=0
 total_disk_drive=0
 stripe_disk_list=""
+
+MAP_FILE=/var/hd_write_verify/mem_map*
 
 LBA_TOOLS=/var/iso/tools/hd_write_verify
 
@@ -117,19 +120,26 @@ if [ "${stripe_disk_list}" == "" ]; then
 	exit 1
 fi
 
-if [ ! -f $LBA_TOOLS ]; then
+if [ ! -f ${LBA_TOOLS} ]; then
 	LBA_TOOLS=hd_write_verify
 fi
 
+#同时进行多个LBA测试(磁盘/文件/内存等)时，删除已结束LBA测试的mem_map文件
+LBA_PID=`pidof hd_write_verify`
+
+if [ ! -z "${LBA_PID}" ]; then
+	FILTER=$(echo "${LBA_PID}" | sed s/" "/"\|"/g)
+	MAP_FILE=$(find /var/hd_write_verify/ -name mem_map* | grep -Ev "${FILTER}")
+fi
+
+rm -f ${MAP_FILE} > /dev/null 2>&1
+
 cluster_sectors=`expr ${cluster_sectors} / ${total_disk_drive}`
 cluster_sectors=`expr ${cluster_sectors} \* ${total_disk_drive}`
-
-#关闭透明大页
-echo -e "echo never > /sys/kernel/mm/transparent_hugepage/enabled\n"
-echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
 #LBA测试参数保留一份到dmesg日志
 echo "${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} -P split ${stripe_disk_list}"
 echo "${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} -P split ${stripe_disk_list}" > /dev/kmsg
 
+#块存储稳定性测试和数据一致性校验
 ${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} -P split ${stripe_disk_list}

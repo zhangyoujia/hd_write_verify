@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#Author: YOUPLUS <zhang_youjia@126.com>
+#注意: 脚本必须以前台方式运行
 #主要作用: 校验虚拟机热迁移内存数据一致性
 
 bwlimit=204800
@@ -13,6 +15,9 @@ LBA_TOOLS=/var/iso/tools/hd_write_verify
 
 if [ ${#} -gt 2 ]; then
 	echo "Usage: ${0} [cluster_sectors] [bwlimit]"
+	echo "eg: ${0}"
+	echo "eg: ${0} cluster_sectors"
+	echo "eg: ${0} cluster_sectors bwlimit"
 	exit 1
 fi
 
@@ -33,7 +38,7 @@ modprobe loop
 if [ -f ${MEM_FILE} ]; then
 	losetup ${MEM_LOOP} ${MEM_FILE} > /dev/null 2>&1
 
-	#校验上次LBA测试文件的数据一致性
+	#校验上次LBA测试的内存数据一致性
 	${LBA_TOOLS} -c -D -K -T 10 -L ${bwlimit} ${MEM_LOOP}
 
 	LBA_INFO=$(dmesg -c | grep -n "BUG 00")
@@ -60,13 +65,9 @@ fi
 FREE_MEM=$(grep MemFree /proc/meminfo | awk '{print $2}')
 TEST_MEM=$((${FREE_MEM}/1024-512))
 
-if [ ! -f $LBA_TOOLS ]; then
+if [ ! -f ${LBA_TOOLS} ]; then
 	LBA_TOOLS=hd_write_verify
 fi
-
-#关闭透明大页
-echo -e "echo never > /sys/kernel/mm/transparent_hugepage/enabled\n"
-echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
 #LBA测试参数保留一份到dmesg日志
 echo "${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${MEM_LOOP}"
@@ -102,14 +103,17 @@ do
 
 	umount ${MEM_DIR} > /dev/null 2>&1
 
-	#同时进行磁盘LBA测试和内存LBA测试时，每轮只删除内存LBA测试的mem_map文件
+	#同时进行多个LBA测试(磁盘/文件/内存等)时，删除已结束LBA测试的mem_map文件
 	LBA_PID=`pidof hd_write_verify`
-	if [ ! -z ${LBA_PID} ]; then
-		MAP_FILE=$(find /var/hd_write_verify/ -name mem_map* | grep -v ${LBA_PID})
+
+	if [ ! -z "${LBA_PID}" ]; then
+		FILTER=$(echo "${LBA_PID}" | sed s/" "/"\|"/g)
+		MAP_FILE=$(find /var/hd_write_verify/ -name mem_map* | grep -Ev "${FILTER}")
 	fi
+
 	rm -f ${MAP_FILE} > /dev/null 2>&1
 
 	echo 3 > /proc/sys/vm/drop_caches
 
-	sleep 2
+	sleep 3
 done

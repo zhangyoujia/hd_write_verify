@@ -5,23 +5,21 @@
 #主要作用: 块存储稳定性测试和数据一致性校验
 
 bwlimit=102400
-cluster_sectors=2048
 
 skip_disk=0
+total_disk_drive=0
 stripe_disk_list=""
 
 MAP_FILE=/var/hd_write_verify/mem_map*
 
 LBA_TOOLS=/var/iso/tools/hd_write_verify
 
-if [ ${#} -gt 3 ]; then
-	echo "Usage: ${0} [disk] [cluster_sectors] [bwlimit]"
+if [ ${#} -gt 2 ]; then
+	echo "Usage: ${0} [disk] [bwlimit]"
 	echo "eg: ${0}"
 	echo "eg: ${0} disk"
-	echo "eg: ${0} disk cluster_sectors"
-	echo "eg: ${0} disk cluster_sectors bwlimit"
-	echo "eg: ${0} cluster_sectors"
-	echo "eg: ${0} cluster_sectors bwlimit"
+	echo "eg: ${0} disk bwlimit"
+	echo "eg: ${0} bwlimit"
 	exit 1
 fi
 
@@ -36,22 +34,12 @@ fi
 if [ ! -z ${stripe_disk_list} ]; then
 	#参数2: 可指定
 	if [ ! -z ${2} ]; then
-		cluster_sectors=${2}
-	fi
-
-	#参数3: 可指定
-	if [ ! -z ${3} ]; then
-		bwlimit=${3}
+		bwlimit=${2}
 	fi
 else
 	#参数1: 可指定
 	if [ ! -z ${1} ]; then
-		cluster_sectors=${1}
-	fi
-
-	#参数2: 可指定
-	if [ ! -z ${2} ]; then
-		bwlimit=${2}
+		bwlimit=${1}
 	fi
 fi
 
@@ -120,6 +108,8 @@ if [ ! -f ${LBA_TOOLS} ]; then
 	LBA_TOOLS=hd_write_verify
 fi
 
+mkdir -p /var/hd_write_verify/
+
 #同时进行多个LBA测试(磁盘/文件/内存等)时，删除已结束LBA测试的mem_map文件
 LBA_PID=`pidof hd_write_verify`
 
@@ -131,8 +121,8 @@ fi
 rm -f ${MAP_FILE} > /dev/null 2>&1
 
 #LBA测试参数保留一份到dmesg日志
-echo "${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} -P robin ${stripe_disk_list}"
-echo "${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} -P robin ${stripe_disk_list}" > /dev/kmsg
+echo "${LBA_TOOLS} -c -D -K -V check -T 1 -L ${bwlimit} -P split ${stripe_disk_list}"
+echo "${LBA_TOOLS} -c -D -K -V check -T 1 -L ${bwlimit} -P split ${stripe_disk_list}" > /dev/kmsg
 
-#块存储稳定性测试和数据一致性校验
-${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} -P robin ${stripe_disk_list}
+#块存储数据一致性校验
+${LBA_TOOLS} -c -D -K -V check -T 1 -L ${bwlimit} -P split ${stripe_disk_list}
