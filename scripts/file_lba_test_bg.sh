@@ -40,6 +40,9 @@ if [ -f ${LBA_FILE} ]; then
 	#文件存储: 校验上次LBA测试文件数据一致性
 	${LBA_TOOLS} -d -D -T 10 -L ${bwlimit} ${LBA_FILE} > "/var/log/$(basename ${LBA_FILE}).log"
 
+	LBA_PID=$(ps -aux | grep ${LBA_TOOLS} | grep ${LBA_FILE} | awk '{print $2}')
+	trap "kill -9 ${LBA_PID}" EXIT
+
 	while :;
 	do
 		LBA_PID=$(ps -aux | grep ${LBA_TOOLS} | grep ${LBA_FILE} | awk '{print $2}')
@@ -57,11 +60,6 @@ if [ -f ${LBA_FILE} ]; then
 	fi
 
 	rm -f ${LBA_FILE} > /dev/null 2>&1
-
-	#删除本轮文件LBA测试的mem_map文件
-	MAP_FILE=$(find /var/hd_write_verify/ -name mem_map* | grep ${TOOLS_PID})
-
-	rm -f ${MAP_FILE} > /dev/null 2>&1
 
 	#退出测试
 	if [ -f /var/log/QUIT_FILE_LBA_TEST ]; then
@@ -81,6 +79,9 @@ do
 
 	#文件存储稳定性测试和数据一致性校验
 	${LBA_TOOLS} -d -D -K -R 33 -w on -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE} > "/var/log/$(basename ${LBA_FILE}).log"
+
+	LBA_PID=$(ps -aux | grep ${LBA_TOOLS} | grep ${LBA_FILE} | awk '{print $2}')
+	trap "kill -9 ${LBA_PID}" EXIT
 
 	while :;
 	do
