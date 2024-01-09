@@ -13,6 +13,10 @@ MAP_FILE=/var/hd_write_verify/mem_map*
 
 LBA_TOOLS=/var/iso/tools/hd_write_verify
 
+KILL_PROC=/var/iso/tools/scripts/kill_shell_proccess.sh
+DATE_RECORD=/var/iso/tools/scripts/date.sh
+MEM_DIRTY_RECORD=/var/iso/tools/scripts/mem_dirty_speed.sh
+
 if [ ${#} -gt 2 ]; then
 	echo "Usage: ${0} [cluster_sectors] [bwlimit]"
 	echo "eg: ${0}"
@@ -35,13 +39,36 @@ mkdir -p ${MEM_DIR}
 
 modprobe loop
 
+if [ ! -f ${KILL_PROC} ]; then
+	KILL_PROC=kill_shell_proccess.sh
+fi
+trap "${KILL_PROC}" EXIT
+
+#脚本date.sh用于测试虚拟机热迁移，downtime的中断时间长短；
+#非必要不运行，1秒执行4次date重定向输出日志，容易因为bash频繁调用fork耗尽系统内存
+if [ ! -f ${DATE_RECORD} ]; then
+	DATE_RECORD=date.sh
+fi
+#${DATE_RECORD} &
+
+if [ ! -f ${MEM_DIRTY_RECORD} ]; then
+	MEM_DIRTY_RECORD=mem_dirty_speed.sh
+fi
+${MEM_DIRTY_RECORD} &
+
+if [ ! -f ${LBA_TOOLS} ]; then
+	LBA_TOOLS=hd_write_verify
+fi
+
 if [ -f ${MEM_FILE} ]; then
 	losetup ${MEM_LOOP} ${MEM_FILE} > /dev/null 2>&1
 
 	#校验上次LBA测试的内存数据一致性
 	${LBA_TOOLS} -c -D -K -T 10 -L ${bwlimit} ${MEM_LOOP}
 
-	LBA_INFO=$(dmesg -c | grep -n "BUG 00")
+	dmesg -T >> /var/log/dmesg.txt
+
+	LBA_INFO=$(dmesg -cT | grep -n "BUG 00")
 	if [ ! -z ${LBA_INFO} ]; then
 		echo ${LBA_INFO}
 		exit 1
@@ -65,10 +92,6 @@ fi
 FREE_MEM=$(grep MemFree /proc/meminfo | awk '{print $2}')
 TEST_MEM=$((${FREE_MEM}/1024-512))
 
-if [ ! -f ${LBA_TOOLS} ]; then
-	LBA_TOOLS=hd_write_verify
-fi
-
 #LBA测试参数保留一份到dmesg日志
 echo "${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${MEM_LOOP}"
 echo "${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${MEM_LOOP}" > /dev/kmsg
@@ -91,9 +114,11 @@ do
 	#内存LBA测试
 	${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${MEM_LOOP}
 
-	LBA_INFO=$(dmesg -c | grep -n "BUG 00")
-	if [ ! -z ${LBA_INFO} ]; then
-		echo ${LBA_INFO}
+	dmesg -T >> /var/log/dmesg.txt
+
+	LBA_INFO=$(dmesg -cT | grep -n "BUG 00")
+	if [ ! -z "${LBA_INFO}" ]; then
+		echo "${LBA_INFO}"
 		break
 	fi
 

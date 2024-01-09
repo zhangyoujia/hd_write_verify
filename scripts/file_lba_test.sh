@@ -40,8 +40,10 @@ if [ -f ${LBA_FILE} ]; then
 	#文件存储: 校验上次LBA测试文件数据一致性
 	${LBA_TOOLS} -c -D -K -T 10 -L ${bwlimit} ${LBA_FILE}
 
+	dmesg -T >> /var/log/dmesg.txt
+
 	#如果测试出LBA问题，保留对应文件
-	LBA_INFO=$(dmesg -c | grep -n "BUG 00")
+	LBA_INFO=$(dmesg -cT | grep -n "BUG 00")
 	if [ ! -z "${LBA_INFO}" ]; then
 		echo "${LBA_INFO}"
 		exit 1
@@ -72,8 +74,10 @@ do
 	#文件存储稳定性测试和数据一致性校验
 	${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE}
 
+	dmesg -T >> /var/log/dmesg.txt
+
 	#如果测试出LBA问题，保留对应文件
-	LBA_INFO=$(dmesg -c | grep -n "BUG 00")
+	LBA_INFO=$(dmesg -cT | grep -n "BUG 00")
 	if [ ! -z "${LBA_INFO}" ]; then
 		echo "${LBA_INFO}"
 		break

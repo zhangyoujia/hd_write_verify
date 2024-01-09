@@ -41,6 +41,7 @@ if [ -f ${LBA_FILE} ]; then
 	${LBA_TOOLS} -d -D -T 10 -L ${bwlimit} ${LBA_FILE} > "/var/log/$(basename ${LBA_FILE}).log"
 
 	LBA_PID=$(ps -aux | grep ${LBA_TOOLS} | grep ${LBA_FILE} | awk '{print $2}')
+
 	trap "kill -9 ${LBA_PID}" EXIT
 
 	while :;
@@ -81,6 +82,7 @@ do
 	${LBA_TOOLS} -d -D -K -R 33 -w on -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE} > "/var/log/$(basename ${LBA_FILE}).log"
 
 	LBA_PID=$(ps -aux | grep ${LBA_TOOLS} | grep ${LBA_FILE} | awk '{print $2}')
+
 	trap "kill -9 ${LBA_PID}" EXIT
 
 	while :;
