@@ -13,9 +13,9 @@ MAP_FILE=/var/hd_write_verify/mem_map*
 
 LBA_TOOLS=/var/iso/tools/hd_write_verify
 
-KILL_PROC=/var/iso/tools/scripts/kill_shell_proccess.sh
-DATE_RECORD=/var/iso/tools/scripts/date.sh
-MEM_DIRTY_RECORD=/var/iso/tools/scripts/mem_dirty_speed.sh
+KILL_PROC=$(pwd)/kill_shell_proccess.sh
+DATE_RECORD=$(pwd)/date.sh
+MEM_DIRTY_RECORD=$(pwd)/mem_dirty_speed.sh
 
 if [ ${#} -gt 2 ]; then
 	echo "Usage: ${0} [cluster_sectors] [bwlimit]"
