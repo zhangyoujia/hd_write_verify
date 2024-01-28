@@ -4,14 +4,19 @@
 #注意: 脚本必须以前台方式运行
 #主要作用: 块存储稳定性测试和数据一致性校验
 
+#默认限速
 bwlimit=102400
+
+#默认簇大小
 cluster_sectors=2048
 
 skip_disk=0
 stripe_disk_list=""
 
+#虚拟地址与物理地址映射文件
 MAP_FILE=/var/hd_write_verify/mem_map*
 
+#升级的LBA工具
 LBA_TOOLS=/var/iso/tools/hd_write_verify
 
 if [ ${#} -gt 3 ]; then
@@ -117,7 +122,12 @@ if [ "${stripe_disk_list}" == "" ]; then
 fi
 
 if [ ! -f ${LBA_TOOLS} ]; then
-	LBA_TOOLS=hd_write_verify
+	#临时激活的LBA工具
+	LBA_TOOLS=/run/hd_write_verify
+
+	if [ ! -f ${LBA_TOOLS} ]; then
+		LBA_TOOLS=hd_write_verify
+	fi
 fi
 
 #同时进行多个LBA测试(磁盘/文件/内存等)时，删除已结束LBA测试的mem_map文件

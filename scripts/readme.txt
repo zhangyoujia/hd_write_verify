@@ -5,7 +5,7 @@
 
 3.	把scripts自动化测试脚本放到/root/目录下；
 
-4.	给scripts自动化测试脚本加上可执行权限(chmod +x /root/scripts/*)；
+4.	给scripts自动化测试脚本加上可执行权限(dos2unix /root/scripts/*; chmod +x /root/scripts/*)；
 
 5.	自动化测试，实例：
 测试块存储：
