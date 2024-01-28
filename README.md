@@ -20,6 +20,9 @@ LBA tools are very useful for testing Storage stability and verifying DATA consi
 ## 存储稳定性测试与数据一致性校验工具和系统
 ![example](./test/存储稳定性测试与数据一致性校验工具和系统.png)
 
+## 个人简介
+![example](./test/author.png)
+
 ## 目录
 ![example](./test/目录.png)
 
