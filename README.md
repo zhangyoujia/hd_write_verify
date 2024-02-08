@@ -7,7 +7,7 @@
 
 Author: YOUPLUS(<zhang_youjia@126.com>)
 
-Copyright (c) 2016-2023 YOUPLUS. All Rights Reserved.
+Copyright (c) 2016-2024 YOUPLUS. All Rights Reserved.
 
 Data is a vital asset for many businesses, making storage stability and data consistency the most fundamental requirements in storage technology scenarios.
 
@@ -89,6 +89,9 @@ LBA tools are very useful for testing Storage stability and verifying DATA consi
 ![example](./test/lba工具使用演示.gif)
 
 ![example](./test/lba工具_BUG%20007.gif)
+
+## 自动化测试脚本：scripts
+![example](./test/scripts.png)
 
 ## LBA Problem: BUG_001[1]
 ![example](./test/BUG001[1].png)
