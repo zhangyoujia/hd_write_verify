@@ -1,10 +1,10 @@
 【提纲】
 一. 个人简介
 深交所上市科技公司，前员工持股平台合伙人之一(9000+员工，100+合伙人)，资深技术专家；
-现云计算公司，员工持股平台合伙人之一(XXX人)，虚拟化团队负责人，资深架构师、技术专家；
+现云计算公司，员工持股平台合伙人之一，虚拟化团队负责人，资深架构师、技术专家；
 
 15年研发经验：
-3年网络安全：tcp/ip网络协议栈，netfilter，网卡驱动等；
+3年网络安全；
 12年虚拟化、内核、存储；
 目前仍在研发一线；
 
@@ -54,7 +54,7 @@ https://cloud.tencent.com/developer/article/2345169
 九.	腾讯会议录屏
 https://cloud.tencent.com/developer/video/78756
 
-https://www.bilibili.com/video/BV1aX4y1L78a/?spm_id_from=333.999.0.0&vd_source=883f83305607b323980f16140ecc0dde
+https://www.bilibili.com/video/BV1aX4y1L78a
 
 十.	合作 & 试用
 2023年8月开始对外分享和推荐LBA工具和自动化测试系统，目前已有十几个公司在使用、并开始有国外使用者；
