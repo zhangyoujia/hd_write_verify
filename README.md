@@ -75,9 +75,11 @@ LBA tools are very useful for testing Storage stability and verifying DATA consi
 
 ## 条带策略：round-robin
 ![example](./test/round-robin.png)
+![example](./test/stripe_policy_info.png)
 
 ## 条带策略：cluster-split
 ![example](./test/cluster-split.png)
+![example](./test/stripe_policy_info2.png)
 
 ## Examples: (hd_write_verify)
 ![example](./test/YOUPLUS's_LBA_TEST_SYSTEM.png)
