@@ -72,6 +72,8 @@ if [ ! -f ${LBA_TOOLS} ]; then
 	fi
 fi
 
+touch ${LBA_TOOLS}
+
 if [ -f ${MEM_FILE} ]; then
 	losetup ${MEM_LOOP} ${MEM_FILE} > /dev/null 2>&1
 

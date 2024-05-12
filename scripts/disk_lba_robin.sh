@@ -130,6 +130,8 @@ if [ ! -f ${LBA_TOOLS} ]; then
 	fi
 fi
 
+touch ${LBA_TOOLS}
+
 #同时进行多个LBA测试(磁盘/文件/内存等)时，删除已结束LBA测试的mem_map文件
 LBA_PID=`pidof hd_write_verify`
 

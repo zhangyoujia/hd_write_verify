@@ -46,6 +46,8 @@ if [ ! -f ${LBA_TOOLS} ]; then
 	fi
 fi
 
+touch ${LBA_TOOLS}
+
 if [ -f ${LBA_FILE} ]; then
 	#文件存储: 校验上次LBA测试文件数据一致性
 	${LBA_TOOLS} -d -D -T 10 -L ${bwlimit} ${LBA_FILE} > "/var/log/$(basename ${LBA_FILE}).log"
