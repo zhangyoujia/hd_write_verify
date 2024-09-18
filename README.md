@@ -119,6 +119,10 @@ LBA tools are very useful for testing Storage stability and verifying DATA consi
 ## 自动化测试脚本：scripts
 ![example](./test/scripts.png)
 
+![example](./test/物理存储自动化测试.png)
+
+![example](./test/文件存储自动化测试.png)
+
 ## LBA Problem: BUG_001[1]
 ![example](./test/BUG001[1].png)
 
