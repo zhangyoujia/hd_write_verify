@@ -88,9 +88,33 @@ LBA tools are very useful for testing Storage stability and verifying DATA consi
 
 ![example](./test/YOUPLUS's_LBA_TEST_SYSTEM2.png)
 
-![example](./test/lba工具使用演示.gif)
+## LBA工具典型应用场景
+![example](./test/LBA工具典型应用场景1.png)
 
-![example](./test/lba工具_BUG%20007.gif)
+![example](./test/LBA工具典型应用场景2.png)
+
+![example](./test/LBA工具典型应用场景3.png)
+
+![example](./test/LBA工具典型应用场景4.png)
+
+## LBA工具应用实例
+![example](./test/LBA工具应用实例1.png)
+
+![example](./test/LBA工具应用实例2.png)
+
+![example](./test/LBA工具应用实例3.png)
+
+![example](./test/LBA工具应用实例4.png)
+
+![example](./test/LBA工具应用实例5.png)
+
+![example](./test/LBA工具应用实例6.png)
+
+![example](./test/LBA工具应用实例7.png)
+
+![example](./test/LBA工具应用实例8.png)
+
+![example](./test/LBA工具应用实例9.png)
 
 ## 自动化测试脚本：scripts
 ![example](./test/scripts.png)
@@ -150,7 +174,6 @@ LBA tools are very useful for testing Storage stability and verifying DATA consi
 
 ![example](./test/簇内数据校验2.png)
 
-
 ## Windows版本
 ![usage](./test/hd_write_verify.exe%20help.png)
 
@@ -160,8 +183,7 @@ LBA tools are very useful for testing Storage stability and verifying DATA consi
 
 ![example](./test/hd_write_verify_dump\(windows\).png)
 
-
-## 磁盘稳定性自动化测试
+## windows磁盘稳定性自动化测试
 ![example](./test/磁盘lba工具自动化测试.png)
 
 ![example](./test/磁盘lba工具自动化测试1.png)
@@ -171,19 +193,6 @@ LBA tools are very useful for testing Storage stability and verifying DATA consi
 ![example](./test/磁盘lba工具自动化测试4.png)
 
 ![example](./test/磁盘lba工具自动化测试5.png)
-
-## linux文件条带测试
-#linux条带测试：round-robin
-![example](./test/stripe_robin.png)
-
-#linux条带线程数据校验：round-robin
-![example](./test/stripe_robin_dump.png)
-
-#linux条带测试：cluster-split
-![example](./test/stripe_split.png)
-
-#linux条带线程数据校验：cluster-split
-![example](./test/stripe_split_dump.png)
 
 ## windows磁盘条带测试
 #windows两磁盘条带测试
@@ -200,3 +209,4 @@ LBA tools are very useful for testing Storage stability and verifying DATA consi
 
 #windows三条带自动化测试
 ![example](./test/三条带自动化测试_windows.png)
+
