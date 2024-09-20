@@ -161,8 +161,8 @@ cluster_sectors=`expr ${cluster_sectors} / ${total_disk_drive}`
 cluster_sectors=`expr ${cluster_sectors} \* ${total_disk_drive}`
 
 #LBA测试参数保留一份到dmesg日志
-echo "${LBA_TOOLS} -c -D -K -w on -t on -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} -P split ${stripe_disk_list}"
-echo "${LBA_TOOLS} -c -D -K -w on -t on -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} -P split ${stripe_disk_list}" > /dev/kmsg
+echo "${LBA_TOOLS} -c -D -K -w on -U on -t on -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} -P split ${stripe_disk_list}"
+echo "${LBA_TOOLS} -c -D -K -w on -U on -t on -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} -P split ${stripe_disk_list}" > /dev/kmsg
 
 #块存储稳定性测试和数据一致性校验
-${LBA_TOOLS} -c -D -K -w on -t on -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} -P split ${stripe_disk_list}
+${LBA_TOOLS} -c -D -K -w on -U on -t on -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} -P split ${stripe_disk_list}

@@ -85,8 +85,8 @@ if [ -f ${LBA_FILE} ]; then
 fi
 
 #LBA测试参数保留一份到dmesg日志
-echo "${LBA_TOOLS} -c -D -K -w on -B ${bsrange} -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE}"
-echo "${LBA_TOOLS} -c -D -K -w on -B ${bsrange} -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE}" > /dev/kmsg
+echo "${LBA_TOOLS} -c -D -K -w on -U on -t on -n 3 -B ${bsrange} -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} ${LBA_FILE}"
+echo "${LBA_TOOLS} -c -D -K -w on -U on -t on -n 3 -B ${bsrange} -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} ${LBA_FILE}" > /dev/kmsg
 
 while :;
 do
@@ -99,7 +99,7 @@ do
 	truncate --size 10G ${LBA_FILE}
 
 	#文件存储稳定性测试和数据一致性校验
-	${LBA_TOOLS} -c -D -K -w on -B ${bsrange} -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE}
+	${LBA_TOOLS} -c -D -K -w on -U on -t on -n 3 -B ${bsrange} -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} ${LBA_FILE}
 
 	dmesg -T >> /var/log/dmesg.txt
 

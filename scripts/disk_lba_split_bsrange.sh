@@ -11,7 +11,7 @@ bwlimit=102400
 cluster_sectors=2048
 
 #指定IO随机大小范围
-bsrange="1-64"
+bsrange="1-2048"
 
 skip_disk=0
 total_disk_drive=0
@@ -46,6 +46,7 @@ if [ ! -z ${stripe_disk_list} ]; then
 	#参数2: 可指定
 	if [ ! -z ${2} ]; then
 		cluster_sectors=${2}
+		bsrange="1-${cluster_sectors}"
 	fi
 
 	#参数3: 可指定
@@ -56,6 +57,7 @@ else
 	#参数1: 可指定
 	if [ ! -z ${1} ]; then
 		cluster_sectors=${1}
+		bsrange="1-${cluster_sectors}"
 	fi
 
 	#参数2: 可指定

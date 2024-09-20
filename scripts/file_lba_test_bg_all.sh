@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Author: YOUPLUS <zhang_youjia@126.com>
-#注意: 脚本必须以前台方式运行
+#注意: 脚本可以前台/后台方式运行
 #主要作用: 文件存储稳定性测试和数据一致性校验
 
 #默认限速
@@ -65,14 +65,25 @@ fi
 
 if [ -f ${LBA_FILE} ]; then
 	#文件存储: 校验上次LBA测试文件数据一致性
-	${LBA_TOOLS} -c -D -K -T 10 -L ${bwlimit} ${LBA_FILE}
+	${LBA_TOOLS} -d -D -T 10 -L ${bwlimit} ${LBA_FILE} > "/var/log/$(basename ${LBA_FILE}).log"
 
-	dmesg -T >> /var/log/dmesg.txt
+	LBA_PID=$(ps -aux | grep ${LBA_TOOLS} | grep ${LBA_FILE} | awk '{print $2}')
 
-	#如果测试出LBA问题，保留对应文件
-	LBA_INFO=$(dmesg -cT | grep -n "BUG 00")
-	if [ ! -z "${LBA_INFO}" ]; then
-		echo "${LBA_INFO}"
+	trap "kill -9 ${LBA_PID}" EXIT
+
+	while :;
+	do
+		LBA_PID=$(ps -aux | grep ${LBA_TOOLS} | grep ${LBA_FILE} | awk '{print $2}')
+		if [ -z ${LBA_PID} ]; then
+			break
+		fi
+
+		sleep 3
+	done
+
+	LBA_INFO=$(grep -n BUG "/var/log/$(basename ${LBA_FILE}).log")
+	if [ $? == 0 ]; then
+		echo ${LBA_INFO}
 		exit 1
 	fi
 
@@ -83,10 +94,6 @@ if [ -f ${LBA_FILE} ]; then
 		exit 0
 	fi
 fi
-
-#LBA测试参数保留一份到dmesg日志
-echo "${LBA_TOOLS} -c -D -K -w on -B ${bsrange} -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE}"
-echo "${LBA_TOOLS} -c -D -K -w on -B ${bsrange} -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE}" > /dev/kmsg
 
 while :;
 do
@@ -99,14 +106,25 @@ do
 	truncate --size 10G ${LBA_FILE}
 
 	#文件存储稳定性测试和数据一致性校验
-	${LBA_TOOLS} -c -D -K -w on -B ${bsrange} -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE}
+	${LBA_TOOLS} -d -D -K -w on -U on -t on -n 3 -B ${bsrange} -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} ${LBA_FILE} > "/var/log/$(basename ${LBA_FILE}).log"
 
-	dmesg -T >> /var/log/dmesg.txt
+	LBA_PID=$(ps -aux | grep ${LBA_TOOLS} | grep ${LBA_FILE} | awk '{print $2}')
 
-	#如果测试出LBA问题，保留对应文件
-	LBA_INFO=$(dmesg -cT | grep -n "BUG 00")
-	if [ ! -z "${LBA_INFO}" ]; then
-		echo "${LBA_INFO}"
+	trap "kill -9 ${LBA_PID}" EXIT
+
+	while :;
+	do
+		LBA_PID=$(ps -aux | grep ${LBA_TOOLS} | grep ${LBA_FILE} | awk '{print $2}')
+		if [ -z ${LBA_PID} ]; then
+			break
+		fi
+
+		sleep 3
+	done
+
+	LBA_INFO=`grep -n BUG "/var/log/$(basename ${LBA_FILE}).log"`
+	if [ $? == 0 ]; then
+		echo ${LBA_INFO}
 		break
 	fi
 
@@ -121,6 +139,4 @@ do
 	fi
 
 	rm -f ${MAP_FILE} > /dev/null 2>&1
-
-	sleep 3
 done

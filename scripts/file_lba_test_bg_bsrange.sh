@@ -11,7 +11,7 @@ bwlimit=102400
 cluster_sectors=2048
 
 #指定IO随机大小范围
-bsrange="1-64"
+bsrange="1-2048"
 
 #虚拟地址与物理地址映射文件
 MAP_FILE=/var/hd_write_verify/mem_map*
@@ -33,6 +33,7 @@ LBA_FILE=`realpath ${1}`
 #参数2: 可指定
 if [ ! -z ${2} ]; then
 	cluster_sectors=${2}
+	bsrange="1-${cluster_sectors}"
 fi
 
 #参数3: 可指定
@@ -105,7 +106,7 @@ do
 	truncate --size 10G ${LBA_FILE}
 
 	#文件存储稳定性测试和数据一致性校验
-	${LBA_TOOLS} -d -D -K -w on -A on -B ${bsrange} -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE} > "/var/log/$(basename ${LBA_FILE}).log"
+	${LBA_TOOLS} -d -D -K -w on -B ${bsrange} -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE} > "/var/log/$(basename ${LBA_FILE}).log"
 
 	LBA_PID=$(ps -aux | grep ${LBA_TOOLS} | grep ${LBA_FILE} | awk '{print $2}')
 
