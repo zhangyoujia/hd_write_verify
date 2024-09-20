@@ -42,11 +42,22 @@ if [ ! -f ${LBA_TOOLS} ]; then
 	LBA_TOOLS=/run/hd_write_verify
 
 	if [ ! -f ${LBA_TOOLS} ]; then
-		LBA_TOOLS=hd_write_verify
-	fi
-fi
+		LBA_TOOLS=`which hd_write_verify`
 
-touch ${LBA_TOOLS}
+		if [ -f ${LBA_TOOLS} ]; then
+			touch ${LBA_TOOLS}
+
+			LBA_TOOLS=hd_write_verify
+		else
+			echo "NO LBA tools!"
+			exit 1
+		fi
+	else
+		touch ${LBA_TOOLS}
+	fi
+
+	sleep 1
+fi
 
 if [ -f ${LBA_FILE} ]; then
 	#文件存储: 校验上次LBA测试文件数据一致性
@@ -91,7 +102,7 @@ do
 	truncate --size 10G ${LBA_FILE}
 
 	#文件存储稳定性测试和数据一致性校验
-	${LBA_TOOLS} -d -D -K -R 33 -w on -t on -n 3 -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} ${LBA_FILE} > "/var/log/$(basename ${LBA_FILE}).log"
+	${LBA_TOOLS} -d -D -K -w on -U on -t on -n 3 -S ${cluster_sectors} -V all -T 10 -L ${bwlimit} ${LBA_FILE} > "/var/log/$(basename ${LBA_FILE}).log"
 
 	LBA_PID=$(ps -aux | grep ${LBA_TOOLS} | grep ${LBA_FILE} | awk '{print $2}')
 

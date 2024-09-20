@@ -42,11 +42,22 @@ if [ ! -f ${LBA_TOOLS} ]; then
 	LBA_TOOLS=/run/hd_write_verify
 
 	if [ ! -f ${LBA_TOOLS} ]; then
-		LBA_TOOLS=hd_write_verify
-	fi
-fi
+		LBA_TOOLS=`which hd_write_verify`
 
-touch ${LBA_TOOLS}
+		if [ -f ${LBA_TOOLS} ]; then
+			touch ${LBA_TOOLS}
+
+			LBA_TOOLS=hd_write_verify
+		else
+			echo "NO LBA tools!"
+			exit 1
+		fi
+	else
+		touch ${LBA_TOOLS}
+	fi
+
+	sleep 1
+fi
 
 if [ -f ${LBA_FILE} ]; then
 	#文件存储: 校验上次LBA测试文件数据一致性
@@ -70,8 +81,8 @@ if [ -f ${LBA_FILE} ]; then
 fi
 
 #LBA测试参数保留一份到dmesg日志
-echo "${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE}"
-echo "${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE}" > /dev/kmsg
+echo "${LBA_TOOLS} -c -D -K -w on -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE}"
+echo "${LBA_TOOLS} -c -D -K -w on -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE}" > /dev/kmsg
 
 while :;
 do
@@ -84,7 +95,7 @@ do
 	truncate --size 10G ${LBA_FILE}
 
 	#文件存储稳定性测试和数据一致性校验
-	${LBA_TOOLS} -c -D -K -R 33 -w on -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE}
+	${LBA_TOOLS} -c -D -K -w on -S ${cluster_sectors} -V once -T 10 -L ${bwlimit} ${LBA_FILE}
 
 	dmesg -T >> /var/log/dmesg.txt
 
