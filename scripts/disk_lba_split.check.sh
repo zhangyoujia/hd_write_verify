@@ -112,21 +112,8 @@ if [ ! -f ${LBA_TOOLS} ]; then
 	LBA_TOOLS=/run/hd_write_verify
 
 	if [ ! -f ${LBA_TOOLS} ]; then
-		LBA_TOOLS=`which hd_write_verify`
-
-		if [ -f ${LBA_TOOLS} ]; then
-			touch ${LBA_TOOLS}
-
-			LBA_TOOLS=hd_write_verify
-		else
-			echo "NO LBA tools!"
-			exit 1
-		fi
-	else
-		touch ${LBA_TOOLS}
+		LBA_TOOLS=hd_write_verify
 	fi
-
-	sleep 1
 fi
 
 mkdir -p /var/hd_write_verify/
