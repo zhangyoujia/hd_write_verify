@@ -20,9 +20,9 @@ MAP_FILE=/var/hd_write_verify/mem_map*
 #升级的LBA工具
 LBA_TOOLS=/var/iso/tools/hd_write_verify
 
-KILL_PROC=$(pwd)/kill_shell_proccess.sh
-DATE_RECORD=$(pwd)/date.sh
-MEM_DIRTY_RECORD=$(pwd)/mem_dirty_speed.sh
+KILL_PROC=$(dirname $(realpath ${0}))/kill_shell_proccess.sh
+DATE_RECORD=$(dirname $(realpath ${0}))/date.sh
+MEM_DIRTY_RECORD=$(dirname $(realpath ${0}))/mem_dirty_speed.sh
 
 if [ ${#} -gt 2 ]; then
 	echo "Usage: ${0} [cluster_sectors] [bwlimit]"
