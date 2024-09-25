@@ -24,6 +24,12 @@ if [ ${#} != 1 -a ${#} != 2 -a ${#} != 3 ]; then
 	exit 1
 fi
 
+echo -e "\033[40m\033[0m"
+echo -e "\033[1;30;44m ------------------------------------------------------ \033[0m\n"
+echo -e "\033[1;37;40m       Welcome to the YOUPLUS's LBA TESTING SYSTEM      \033[0m\n"
+echo -e "\033[1;37;40m       https://github.com/zhangyoujia/                  \033[0m\n"
+echo -e "\033[1;30;44m ------------------------------------------------------ \033[0m\n"
+
 #参数1: 必须指定LBA测试的文件名
 LBA_FILE=`realpath ${1}`
 
