@@ -1,6 +1,9 @@
 ## YOUPLUS's tools
 ![YOUPLUS's tools](./YOUPLUS工具箱.png)
 
+## ‼️注意
+自动化测试系统的ISO文件太大(几百MB)，在github和gitee上更新维护不方便；请访问百度网盘(https://pan.baidu.com/s/1hxM1idYhY1Z3UgqprXif6Q 和 提取码：LBA1)获取最新的LBA工具和自动化测试系统ISO。
+
 =========================================================================
 
 # hd_write_verify & hd_write_verify_dump
