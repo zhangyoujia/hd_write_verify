@@ -40,6 +40,10 @@ do
 	fi
 	LOOP=`expr ${LOOP} + 1`
 
+	if [ ! -f ${MEM_FILE} ]; then
+		continue
+	fi
+
 	BLOCK_SIZE=$(stat ${MEM_FILE} | grep Blocks: | awk '{print $7}')
 	BLOCKS1=$(stat ${MEM_FILE} | grep Blocks: | awk '{print $4}')
 
