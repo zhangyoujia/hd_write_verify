@@ -82,6 +82,11 @@ else
 	#过滤掉已经挂载了文件系统的磁盘
 	mount_info=$(cat /proc/mounts | grep ${stripe_disk_list})
 
+	#处理软链接
+	if [[ -L ${stripe_disk_list} && -e ${stripe_disk_list} ]]; then
+		stripe_disk_list=$(readlink -f "${stripe_disk_list}")
+	fi
+
 	#过滤掉大小为0的磁盘
 	size_info=$(cat /sys/block/$(basename ${stripe_disk_list})/size)
 
