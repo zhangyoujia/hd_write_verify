@@ -1,4 +1,4 @@
-Sangfor:aSV/host-4c72b9e6db88 /sf/data/test/lba # hd_write_verify -c -D -T 1 /dev/nbd4				【1】
+root:localhost / #  hd_write_verify -c -D -T 1 /dev/nbd4											【1】
 Device Topology:
 	Disk: /dev/nbd4
 	Logical  block size: 512

@@ -1,4 +1,4 @@
-Sangfor:aSV/host-4c72b9e6db88 /sf/data/test/lba # hd_write_verify_dump -c -D -T 6 /dev/nbd4			【9】
+root:localhost / #  hd_write_verify_dump -c -D -T 6 /dev/nbd4										【9】
 
 Device Topology:
 	Disk: /dev/nbd4
