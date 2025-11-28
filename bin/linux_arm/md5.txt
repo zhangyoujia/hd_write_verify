@@ -1,2 +1,2 @@
-a8c3c3cde800d4075fb70443f288bb51  hd_write_verify
-ad19e9ca340da1e9eeb3cf04d111aa26  hd_write_verify_dump
+5b2a65ce9153baeff9fd1cc69bec3ad2  hd_write_verify
+cb7bb41da79b259d8d068b43c03407ee  hd_write_verify_dump
