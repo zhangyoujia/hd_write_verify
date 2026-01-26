@@ -157,8 +157,8 @@ fi
 rm -f ${MAP_FILE} > /dev/null 2>&1
 
 #LBA测试参数保留一份到dmesg日志
-echo "${LBA_TOOLS} -c -D -K -w on -W on -B ${bsrange} -S ${cluster_sectors} -V all -T 64 -L ${bwlimit} -P robin ${stripe_disk_list}"
-echo "${LBA_TOOLS} -c -D -K -w on -W on -B ${bsrange} -S ${cluster_sectors} -V all -T 64 -L ${bwlimit} -P robin ${stripe_disk_list}" > /dev/kmsg
+echo "${LBA_TOOLS} -c -D -K -w on -W random -B ${bsrange} -S ${cluster_sectors} -V all -T 64 -L ${bwlimit} -P robin ${stripe_disk_list}"
+echo "${LBA_TOOLS} -c -D -K -w on -W random -B ${bsrange} -S ${cluster_sectors} -V all -T 64 -L ${bwlimit} -P robin ${stripe_disk_list}" > /dev/kmsg
 
 #块存储稳定性测试和数据一致性校验
-${LBA_TOOLS} -c -D -K -w on -W on -B ${bsrange} -S ${cluster_sectors} -V all -T 64 -L ${bwlimit} -P robin ${stripe_disk_list}
+${LBA_TOOLS} -c -D -K -w on -W random -B ${bsrange} -S ${cluster_sectors} -V all -T 64 -L ${bwlimit} -P robin ${stripe_disk_list}
